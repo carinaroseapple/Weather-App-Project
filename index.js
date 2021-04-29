@@ -28,10 +28,15 @@ let months = [
 let month = months[now.getMonth()];
 
 currentDate.innerHTML = `${day}, ${month} ${date}, ${year}`;
+
 if (hour > 12) {
   currentTime.innerHTML = `${hour - 12}:${minutes} PM`;
 } else {
   currentTime.innerHTML = `${hour}:${minutes} AM`;
+}
+
+if (minutes < 10) {
+  currentTime.innerHTML = `${hour}:0${minutes}`;
 }
 
 function search(city) {
