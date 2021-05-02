@@ -54,7 +54,13 @@ function showTemp(response) {
   let temperature = Math.round(response.data.main.temp);
   searchedTemp.innerHTML = `${temperature}`;
   let searchLocation = document.querySelector("#current-City");
+  let descriptionElement = document.querySelector("#current-condition");
+  let humidityElement = document.querySelector("#humidity");
+  let windElement = document.querySelector("#wind");
   searchLocation.innerHTML = response.data.name;
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = response.data.main.humidity;
+  windElement.innerHTML = Math.round(response.data.main.wind.speed);
 }
 
 let searchCity = document.querySelector("#enter-City");
