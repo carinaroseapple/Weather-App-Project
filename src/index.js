@@ -4,7 +4,9 @@ let date = now.getDate();
 let year = now.getFullYear();
 let hour = now.getHours();
 let minutes = now.getMinutes();
-
+if (minutes < 10) {
+  minutes = `0${minutes}`;
+}
 let currentDate = document.querySelector("#current-Date");
 let currentTime = document.querySelector("#current-Time");
 
@@ -60,7 +62,7 @@ function showTemp(response) {
   searchLocation.innerHTML = response.data.name;
   descriptionElement.innerHTML = response.data.weather[0].description;
   humidityElement.innerHTML = response.data.main.humidity;
-  windElement.innerHTML = Math.round(response.data.main.wind.speed);
+  windElement.innerHTML = response.data.wind.speed;
 }
 
 let searchCity = document.querySelector("#enter-City");
