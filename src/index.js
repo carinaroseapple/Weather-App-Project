@@ -51,6 +51,38 @@ function findCity(event) {
   search(enteredCity.value);
 }
 
+function showForecast() {
+  let forecastElement = document.querySelector("#weekdayForecast");
+
+  let days = ["Thu", "Fri", "Sat", "Sun"];
+
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
+    <div class="col-2">
+     <div class="weather-forecast-date">${day}</div>
+      </br>
+       <img
+          src="http://openweathermap.org/img/wn/50d@2x.png"
+          alt=""
+          width="42"
+        />
+      </br>
+     <div class="weather-forecast-temperatures">
+          <span class="weather-forecast-temperature-max"> 18° </span>
+          </br>
+          <span class="weather-forecast-temperature-min"> 12° </span>
+        </div>
+    </div>
+  `;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+}
+
 function showTemp(response) {
   let searchedTemp = document.querySelector("#searchedTemp");
   let temperature = Math.round(response.data.main.temp);
@@ -119,3 +151,4 @@ let currentWeather = document.querySelector("#current-location-button");
 currentWeather.addEventListener("click", getCurrentLocation);
 
 search("Detroit");
+showForecast();
